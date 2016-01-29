@@ -1,0 +1,45 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+
+    <h1> usuarios </h1>
+    <table border="1">
+        <tr>
+            <th>username</th>
+            <th>first name</th>
+            <th>last name</th>
+            <th>email</th>
+            <th>role</th>
+            <th>created</th>
+            <th>updated</th>
+            <th>action</th>
+        </tr>
+        
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    {% if user.role == 'ROLE_ADMIN'%}
+                    
+                    <strong>administrator</strong>
+                    
+                    {% elseif user.role == 'ROLE_USER'%}
+                    
+                    <strong>user</strong>
+                    
+                    {%endif%}
+                </td>
+                <td>{{ user.createdAt | date('d-m-Y h:i') }}</td>
+                <td>{{ user.updatedAt | date('d-m-Y h:i') }}</td>
+                <td>
+                    <a href="#">View</a>
+                    <a href="#">Edit</a>
+                    <a href="#">Delete</a>
+                </td>
+            </tr>
+        
+    </table>
+
+{% endblock %}
